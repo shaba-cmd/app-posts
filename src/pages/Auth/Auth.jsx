@@ -28,7 +28,7 @@ const Auth = () => {
           navigate('/posts');
         })
         .catch((error) => {
-          alert(error.message);
+          setError(error.message);
         });
     } else {
       registration(login, name, password)
@@ -38,7 +38,7 @@ const Auth = () => {
           navigate('/posts');
         })
         .catch((error) => {
-          alert(error.message);
+          setError(error.message);
         });
     }
   }
@@ -49,7 +49,7 @@ const Auth = () => {
         <div className='auth__container'>
           {auth ? <h3>Авторизация</h3> : <h3>Регистрация</h3>}
           <form className='auth-form'>
-            {error && <div className="auth__error">{error}</div>}
+            {error && <p className='err-form'>{error}</p>}
             
             {!auth && <input
                 type="text"

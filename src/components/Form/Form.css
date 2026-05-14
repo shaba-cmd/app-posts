@@ -8,6 +8,22 @@
     padding: 20px;
 }
 
+.add-form__text-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.err-form {
+    color: #ffffff;
+    background: rgba(255, 91, 91, 0.445);
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    text-align: center;
+}
+
 .add-form__name,
 .add-form__text {
     font-size: 16px;
@@ -28,7 +44,6 @@
 }
 
 .add-form__text {
-    margin-top: 12px;
     padding: 22px;
     resize: none;
 }

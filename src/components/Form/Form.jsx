@@ -1,14 +1,19 @@
+import { replaceMethod } from '../../modules/methods.js';
+import { logout, name } from '../../modules/saveData.js';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useComments from '../../modules/api'
 import './Form.css'
-import { replaceMethod } from '../../modules/methods.js';
-import { logout } from '../../modules/saveData.js';
 
-const Form = ({ name }) => {
+const Form = () => {
     const { postComments, fetchRenderComments } = useComments();
+    const [error, setError] = useState('')
     const [text, setText] = useState('');
-    
+    const navigate = useNavigate()
+
     const handlePostClick = () => {
+        setError('');
+
         postComments(text)
             .then((response) => {
                 if (response.status === 400 && text.length < 3) {
@@ -23,11 +28,11 @@ const Form = ({ name }) => {
             })
             .catch((error) => {
                 if (text.length < 3) {
-                    alert(error.message);
+                    setError(error.message);
                 } else if (error.message === "Ошибка сервера") {
                     handlePostClick();
                 } else {
-                    alert("Проверте интернет соединение и попробуйте еще раз");
+                    setError("Проверте интернет соединение и попробуйте еще раз");
                 }
             })
     }
@@ -41,18 +46,25 @@ const Form = ({ name }) => {
                 value={name}
             />
             
-            <textarea
-                className="add-form__text"
-                placeholder="Введите ваш коментарий"
-                rows="4"
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-            ></textarea>
+            <div className='add-form__text-box'>
+                {error && <p className='err-form'>{error}</p>}
+                <textarea
+                    className="add-form__text"
+                    placeholder="Введите ваш коментарий"
+                    rows="4"
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                ></textarea>
+            </div>
             
             <div className="add-form__row">
-                <p id="logout-btn" className="form-logout" onClick={() => {logout()}}>Выйти</p>
+                <p id="logout-btn" className="form-logout" onClick={() => {
+                    logout();
+                    navigate('/');
+                    window.location.reload();
+                }}>Выйти</p>
                 <button className="add-form__button" onClick={() => {
-                    setText(replaceMethod(text))
+                    setText(replaceMethod(text));
                     handlePostClick();
                 }}>Написать</button>
             </div>
