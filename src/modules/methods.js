@@ -1,5 +1,6 @@
 export const replaceMethod = (el) => {
-  return el.value.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
+  if (typeof el !== 'string') return '';
+  return el.replaceAll("<", "&lt;").replaceAll(">", "&gt;");
 };
 
 export const nowDateTime = (date) => {

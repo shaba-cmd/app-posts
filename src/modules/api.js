@@ -30,7 +30,7 @@ const useComments = () => {
         try {
             setLoader(true);
 
-            axios.get(host + '/comments', {
+            await axios.get(host + '/comments', {
                 headers: { Authorization: `Bearer ${token}` },
             }).then(response => setComments(response.data.comments))
         } catch (error) {
@@ -44,7 +44,7 @@ const useComments = () => {
         try {
             setLoader(true);
 
-            axios.post(host + "/comments", { text }, {
+            await axios.post(host + "/comments", { text }, {
               headers: { Authorization: `Bearer ${token}` }
             })
         } catch (error) {
@@ -54,30 +54,40 @@ const useComments = () => {
         }
     }
     
-    async function registration(name, login, password) {
-        try {
-            axios.post(authToken, { login, name, password })
-            .then(response => {
-                console.log(response.data)
-                console.log(response)
-            });  
-        } catch (error) {
-            console.log(error);
-        }
+    function registration( login, name, password ) {
+        return fetch(authToken, {
+            method: "POST",
+            body: JSON.stringify({
+                login,
+                name,
+                password,
+            }),
+        }).then((response) => {
+            if (response.status === 400) {
+            throw new Error("Пользователь с таким логином уже существует");
+            }
+            return response.json();
+        });
     }
-    
-    async function log(login, password) {
-        try {
-            axios.post(authToken + "/login", { login, password })
-              .then(response => response.data);
-        } catch (error) {
-            console.log(error);
-        }
+
+    function log(login, password) {
+        return fetch(authToken + "/login", {
+            method: "POST",
+            body: JSON.stringify({
+                login,
+                password,
+            }),
+        }).then((response) => {
+            if (response.status === 400) {
+            throw new Error("Неверный логин или пароль");
+            }
+            return response.json();
+        });
     }
     
     async function likeComment(commentId, token) {
         try {
-            axios.post(`${host}/comments/${commentId}/toggle-like`, {
+            await axios.post(`${host}/comments/${commentId}/toggle-like`, {
               headers: { Authorization: `Bearer ${token}` },
             }).then(response => response.data);
         } catch (error) {

@@ -43,6 +43,7 @@
 }
 
 .auth-form__button {
+    color: white;
     font-size: 24px;
     padding: 10px 50px;
     margin-left: auto;
@@ -54,9 +55,4 @@
 
 .auth-form__button:hover {
     opacity: 0.9;
-}
-
-.auth-form__button-link {
-    color: white;
-    text-decoration: none;
 }

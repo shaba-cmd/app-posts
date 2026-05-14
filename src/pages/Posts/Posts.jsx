@@ -3,9 +3,9 @@ import Post from '../../components/Post/Post'
 import Loader from '../../components/Loader/Loader'
 import Form from '../../components/Form/Form'
 import { Link } from 'react-router-dom'
+import { token } from '../../modules/saveData'
 
-
-const Posts = ({ comments, loader, name, isAuth }) => {
+const Posts = ({ comments, loader, name }) => {
   return (
     <>
       <main className="posts container">
@@ -24,7 +24,7 @@ const Posts = ({ comments, loader, name, isAuth }) => {
                 />
               )
           })}
-          {isAuth ? <Form name={name} /> : 
+          {token ? <Form name={name} /> : 
           <p className='auth-post'><Link className='auth-link' to='/auth'>Войдите</Link> в профиль, чтобы оставить комментарий</p>}
         </div>
       </main>
