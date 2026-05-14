@@ -1,0 +1,22 @@
+.posts__title {
+    color: white;
+    font-size: 48px;
+    margin-top: 60px;
+}
+
+.posts__box-comm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+    margin-top: 70px;
+    margin-bottom: 100px;
+}
+
+.auth-post {
+    color: white;
+}
+
+.auth-link {
+    color: white;
+}

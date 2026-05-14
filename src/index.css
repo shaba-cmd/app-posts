@@ -1,0 +1,28 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+body {
+  font-family: Helvetica;
+  background-image: linear-gradient(to right bottom, #c321fd, #a935fc, 
+  #8d41f9, #7048f4, #504dee, #3465f7, #1379fd, 
+  #008bff, #00b0ff, #00cfff, #00e9ec, #00ffc7);
+}
+
+main {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  padding-left: calc(50% - 700px);
+  padding-right: calc(50% - 700px);
+}

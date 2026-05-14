@@ -1,0 +1,41 @@
+.main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.main__container {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+}
+
+.main__title {
+    color: white;
+    font-size: 52px;
+}
+
+.main__title span {
+    text-shadow: 0 0 5px white;
+}
+
+.main__link-box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.main__link {
+    font-size: 24px;
+    color: white;
+}
+
+.main__link_unique {
+    color: white;
+}
+
+.main__line {
+    height: 30px;
+    width: 2px;
+    background-color: white;
+    box-shadow: 0 0 5px white;
+}

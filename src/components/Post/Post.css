@@ -1,0 +1,24 @@
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 25px;
+    width: 550px;
+    background-color: white;
+    border-radius: 20px;
+    padding: 20px;
+}
+
+.comment__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.comment__text {
+    font-size: 18px;
+}
+
+.comment__likes {
+    display: flex;
+    justify-content: end;
+}

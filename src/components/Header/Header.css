@@ -1,0 +1,22 @@
+.header {
+    background-color: rgba(17, 17, 17, 0.747);
+    padding-top: 20px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-size: 24px;
+    color: white;
+    text-shadow: 0 0 5px white; 
+    text-decoration: none;
+}
+
+.header__btn {
+    font-size: 18px;
+    color: white;
+    text-decoration: underline;
+    cursor: pointer;
+}
