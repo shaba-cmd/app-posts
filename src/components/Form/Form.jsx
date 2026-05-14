@@ -11,28 +11,23 @@ const Form = () => {
     const [text, setText] = useState('');
     const navigate = useNavigate()
 
-    const handlePostClick = () => {
+    const handlePostClick = (e) => {
+        e.preventDefault()
+
         setError('');
 
-        postComments(text)
-            .then((response) => {
-                if (response.status === 400 && text.length < 3) {
-                        throw new Error("Текст комментария должен быть не менее 3 символов");
-                } else if (response.status === 500) {
-                    throw new Error("Ошибка сервера");
-                }
-            })
-            .then(() => fetchRenderComments())
-            .then(() => {
-                setText("")
-            })
-            .catch((error) => {
-                if (text.length < 3) {
-                    setError(error.message);
-                } else if (error.message === "Ошибка сервера") {
+        const textEl = replaceMethod(text);
+
+        (textEl.length < 3) && setError("Текст комментария должен быть не менее 3 символов")
+        
+        postComments(textEl)
+            .then(() => fetchRenderComments()) // не обновляет список
+            .then(() => setText('')) // очищает даже если ошибся, очищать только если отправил комм
+            .catch ((error) => {
+                if (error.message === "Ошибка сервера") {
                     handlePostClick();
                 } else {
-                    setError("Проверте интернет соединение и попробуйте еще раз");
+                    setError("Проверьте интернет соединение и попробуйте еще раз");
                 }
             })
     }
@@ -63,10 +58,7 @@ const Form = () => {
                     navigate('/');
                     window.location.reload();
                 }}>Выйти</p>
-                <button className="add-form__button" onClick={() => {
-                    setText(replaceMethod(text));
-                    handlePostClick();
-                }}>Написать</button>
+                <button className="add-form__button" onClick={(e) => {handlePostClick(e)}}>Написать</button>
             </div>
         </form>
     )

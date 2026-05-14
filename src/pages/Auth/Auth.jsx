@@ -14,14 +14,16 @@ const Auth = () => {
   const { registration, log } = useComments();
   const navigate = useNavigate();
 
-  const handleClick = async (el) => {
-    el.preventDefault();
+  const handleClick = async (e) => {
+    e.preventDefault();
+
     setError('');
-    setName(replaceMethod(name))
-    setLogin(replaceMethod(login))
+    
+    const nameEl = replaceMethod(name);
+    const loginEl = replaceMethod(login);
 
     if (auth) {
-      log(login, password)
+      log(loginEl, password)
         .then((data) => {
           updateToken(data.user.token);
           updateName(data.user.name);
@@ -31,7 +33,7 @@ const Auth = () => {
           setError(error.message);
         });
     } else {
-      registration(login, name, password)
+      registration(loginEl, nameEl, password)
         .then((data) => {
           updateToken(data.user.token);
           updateName(data.user.name);
@@ -75,7 +77,7 @@ const Auth = () => {
             <div className="auth-form__row">
                 <p id="logout-btn" className="form-logout" onClick={() => {auth ? setAuth(false) : 
                   setAuth(true)}}>{auth ? 'Зарегистрироваться' : 'Войти'}</p>
-                <button className="auth-form__button" onClick={(el) => {handleClick(el  )}}>{auth ? 'Войти' : 'Зарегистрироваться'}</button>
+                <button className="auth-form__button" onClick={(e) => {handleClick(e)}}>{auth ? 'Войти' : 'Зарегистрироваться'}</button>
             </div>
           </form>
         </div>

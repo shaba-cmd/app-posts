@@ -16,7 +16,7 @@
 
 .err-form {
     color: #ffffff;
-    background: rgba(255, 91, 91, 0.445);
+    background: rgba(255, 0, 0, 0.507);
     padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 5px;
@@ -34,7 +34,7 @@
 
 .add-form__name {
     text-shadow: 0 0 10px rgb(0, 255, 255);
-    color: rgb(0, 102, 102);
+    color: rgb(0, 136, 136);
     pointer-events: none;
     cursor: default;
     outline: none;

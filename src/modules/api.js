@@ -40,19 +40,16 @@ const useComments = () => {
         }
     }
 
-    async function postComments(text) {
-        try {
-            setLoader(true);
-
-            await axios.post(host + "/comments", { text }, {
-              headers: { Authorization: `Bearer ${token}` }
-            })
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoader(false);
-        }
-    }
+    function postComments(text) {
+        return fetch(host + "/comments", {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            body: JSON.stringify({ text }),
+        })
+        .finally(() => setLoader(false));
+    } 
     
     function registration( login, name, password ) {
         return fetch(authToken, {
