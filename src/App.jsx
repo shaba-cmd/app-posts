@@ -8,7 +8,7 @@ import Posts from './pages/Posts/Posts'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
-  const { comments, loader, name } = useComments();
+  const { comments, loader, getComments, postComments, likeComment, setComments } = useComments();
   
   return (
     <>
@@ -21,7 +21,10 @@ function App() {
           <Route path='/posts' element={<Posts 
             comments={comments}
             loader={loader}
-            name={name}
+            setComments={setComments}
+            likeComment={likeComment}
+            getComments={getComments}
+            postComments={postComments}
           />}/>
           
           <Route path='/auth' element={<Auth />}/>

@@ -1,5 +1,7 @@
 .header {
     background-color: rgba(17, 17, 17, 0.747);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     padding-top: 20px;
     padding-bottom: 20px;
     display: flex;

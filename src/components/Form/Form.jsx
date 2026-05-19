@@ -2,11 +2,9 @@ import { replaceMethod } from '../../modules/methods.js';
 import { logout, name } from '../../modules/saveData.js';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import useComments from '../../modules/api'
 import './Form.css'
 
-const Form = () => {
-    const { postComments, fetchRenderComments } = useComments();
+const Form = ({ getComments, postComments }) => {
     const [error, setError] = useState('')
     const [text, setText] = useState('');
     const navigate = useNavigate()
@@ -17,17 +15,22 @@ const Form = () => {
         setError('');
 
         const textEl = replaceMethod(text);
-
-        (textEl.length < 3) && setError("Текст комментария должен быть не менее 3 символов")
         
+         if (textEl.length < 3) {
+            setError("Текст комментария должен быть не менее 3 символов");
+            return; // ← выходим, запрос не уходит
+        }
+
         postComments(textEl)
-            .then(() => fetchRenderComments()) // не обновляет список
-            .then(() => setText('')) // очищает даже если ошибся, очищать только если отправил комм
-            .catch ((error) => {
-                if (error.message === "Ошибка сервера") {
-                    handlePostClick();
+            .then(() => {
+                getComments();
+                setText('');
+            })
+            .catch ((err) => {
+                if (err.message === "Ошибка сервера") {
+                    setError("Ошибка сервера. Попробуйте ещё раз.");
                 } else {
-                    setError("Проверьте интернет соединение и попробуйте еще раз");
+                    setError("Проверьте интернет соединение и попробуйте еще раз"); 
                 }
             })
     }
@@ -56,7 +59,6 @@ const Form = () => {
                 <p id="logout-btn" className="form-logout" onClick={() => {
                     logout();
                     navigate('/');
-                    window.location.reload();
                 }}>Выйти</p>
                 <button className="add-form__button" onClick={(e) => {handlePostClick(e)}}>Написать</button>
             </div>

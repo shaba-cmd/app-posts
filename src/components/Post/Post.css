@@ -21,4 +21,10 @@
 .comment__likes {
     display: flex;
     justify-content: end;
+    align-items: center;
+}
+
+.like-button {
+    all: unset;
+    cursor: pointer;
 }

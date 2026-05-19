@@ -26,21 +26,23 @@ const useComments = () => {
         getComments();
     }, [])
 
-    async function fetchRenderComments() {
-        try {
-            setLoader(true);
+    function getComments() {
+            try {
+                setLoader(true);
 
-            await axios.get(host + '/comments', {
-                headers: { Authorization: `Bearer ${token}` },
-            }).then(response => setComments(response.data.comments))
-        } catch (error) {
-            console.log(error);
-        } finally {
-            setLoader(false);
+                axios.get(host + '/comments', {
+                    headers: { Authorization: `Bearer ${token}` },
+                }).then(response => setComments(response.data.comments))
+            } catch (error) {
+                console.log(error);
+            } finally {
+                setLoader(false);
+            }
         }
-    }
 
     function postComments(text) {
+        setLoader(true);
+
         return fetch(host + "/comments", {
             method: "POST",
             headers: {
@@ -82,26 +84,30 @@ const useComments = () => {
         });
     }
     
-    async function likeComment(commentId, token) {
-        try {
-            await axios.post(`${host}/comments/${commentId}/toggle-like`, {
-              headers: { Authorization: `Bearer ${token}` },
-            }).then(response => response.data);
-        } catch (error) {
-            console.log(error);
-        }
+    function likeComment(id, token) {
+        return fetch(`${host}/comments/${id}/toggle-like`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        }).then((response) => {
+            if (response.status === 200 || response.status === 201) {
+                return response.json();
+            }
+            throw new Error("Ошибка при установке лайка");
+        });
     }
 
     return {
         comments,
         loader,
-        fetchRenderComments,
+        getComments,
         postComments,
+        setComments,
+        likeComment,
         registration,
         log,
-        likeComment
     }
 }
-
 
 export default useComments;
