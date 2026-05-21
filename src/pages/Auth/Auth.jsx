@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { replaceMethod } from '../../modules/methods';
 import { updateName, updateToken } from '../../modules/saveData';
 
-const Auth = () => {
+const Auth = ({ getComments }) => {
   const [auth, setAuth] = useState(true);
   const [name, setName] = useState('');
   const [login, setLogin] = useState('');
@@ -28,6 +28,7 @@ const Auth = () => {
           updateToken(data.user.token);
           updateName(data.user.name);
           navigate('/posts');
+          getComments()
         })
         .catch((error) => {
           setError(error.message);
@@ -38,6 +39,7 @@ const Auth = () => {
           updateToken(data.user.token);
           updateName(data.user.name);
           navigate('/posts');
+          getComments()
         })
         .catch((error) => {
           setError(error.message);

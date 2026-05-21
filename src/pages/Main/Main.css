@@ -12,7 +12,8 @@
 
 .main__title {
     color: white;
-    font-size: 52px;
+    font-size: 3.25rem;
+    text-align: center;
 }
 
 .main__title span {
@@ -21,11 +22,12 @@
 
 .main__link-box {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-evenly;
 }
 
 .main__link {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: white;
 }
 
@@ -38,4 +40,22 @@
     width: 2px;
     background-color: white;
     box-shadow: 0 0 5px white;
+}
+
+@media (max-width: 450px) {
+    .main__container {
+        align-items: center;
+    }
+    
+    .main__link-box {
+        width: 170px;
+        row-gap: 10px;
+    }
+
+    .main__line {
+        height: 2px;
+        width: 30px;
+        background-color: white;
+        box-shadow: 0 0 5px white;
+    }
 }

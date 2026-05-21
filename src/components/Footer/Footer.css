@@ -3,18 +3,26 @@
     padding-top: 50px;
     padding-bottom: 50px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: end;
+    gap: 10px;
 }
 
 .footer__logo {
-    font-size: 48px;
+    font-size: 3rem;
     color: white;
     text-shadow: 0 0 5px white;
     text-decoration: none;
 }
 
 .footer__text {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: white;
+}
+
+@media (max-width: 450px) {
+  .footer {
+    justify-content: center;
+  }
 }

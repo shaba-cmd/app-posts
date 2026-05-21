@@ -27,7 +27,9 @@ function App() {
             postComments={postComments}
           />}/>
           
-          <Route path='/auth' element={<Auth />}/>
+          <Route path='/auth' element={<Auth 
+            getComments={getComments}
+          />}/>
         </Routes>
 
         <Footer />

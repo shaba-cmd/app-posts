@@ -1,6 +1,6 @@
 .posts__title {
     color: white;
-    font-size: 48px;
+    font-size: 3rem;
     margin-top: 60px;
 }
 
@@ -19,4 +19,15 @@
 
 .auth-link {
     color: white;
+}
+
+@media (max-width: 650px) {
+    .posts__title {
+        margin-top: 30px;
+    }
+
+    .posts__box-comm {
+        margin-top: 40px;
+        margin-bottom: 60px;
+    }
 }

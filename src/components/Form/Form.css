@@ -24,13 +24,13 @@
     padding: 10px 15px;
     border-radius: 8px;
     margin-bottom: 5px;
-    font-size: 14px;
+    font-size: 0.875rem;
     text-align: center;
 }
 
 .add-form__name,
 .add-form__text {
-    font-size: 16px;
+    font-size: 1rem;
     font-family: Helvetica;
     border-radius: 8px;
     border: none;
@@ -62,7 +62,7 @@
 
 .add-form__button {
     color: white;
-    font-size: 24px;
+    font-size: 1.5rem;
     padding: 10px 50px;
     margin-left: auto;
     background-color: #1b1b1b;
@@ -85,4 +85,28 @@
 .form-logout:hover {
     text-decoration: underline;
     text-shadow: 0 0 5px white;
+}
+
+@media (max-width: 650px) {
+    .add-form {
+        width: 360px;
+    }
+
+    .add-form__name {
+        width: 150px;
+    }
+}
+
+@media (max-width: 450px) {
+    .add-form {
+        width: 260px;
+    }
+
+    .add-form__name {
+        width: 100px;
+    }
+
+    .add-form__button {
+        padding: 10px 30px;
+    }
 }

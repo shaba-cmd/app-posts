@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { nowDateTime } from '../../modules/methods.js'
 import { token } from '../../modules/saveData.js'
+import { formatDistanceToNow } from 'date-fns'
+import { ru } from 'date-fns/locale'
 import './Post.css'
 
 const Post = ({ author, date, id, isLiked, likes, text, likeComment, setComments }) => { 
@@ -25,21 +26,19 @@ const Post = ({ author, date, id, isLiked, likes, text, likeComment, setComments
     <article className="comment" key={id}>
       <div className="comment__header">
         <h3>{author}</h3>
-        <p>{nowDateTime(date)}</p>
+        <p>{formatDistanceToNow(date, {addSuffix: true, locale: ru})}</p>
       </div>
 
       <p className="comment__text">{text}</p>
       
       <div className="comment__likes">
-        <span className={`comment__likes-counter ${isLiked ? 'liked' : ''}`}>
+        <span className={`comment__likes-counter`}>
           {likes}
         </span>
         <button
-          className={`like-button ${isLiked ? 'like-button--active' : ''}`}
+          className={`like-button ${isLiked && 'like-button__active'} ${isLoading && 'like-button__loading'}`}
           onClick={likeBtn}
-          disabled={isLoading}
         >
-          {isLoading ? '...' : (isLiked ? '❤️' : '🤍')}
         </button>
       </div>
     </article>

@@ -18,7 +18,7 @@ const Form = ({ getComments, postComments }) => {
         
          if (textEl.length < 3) {
             setError("Текст комментария должен быть не менее 3 символов");
-            return; // ← выходим, запрос не уходит
+            return;
         }
 
         postComments(textEl)

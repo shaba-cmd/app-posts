@@ -12,7 +12,7 @@
 }
 
 .auth__container h3 {
-    font-size: 52px;
+    font-size: 3.25rem;
     color: white;
 }
 
@@ -31,7 +31,7 @@
 }
 
 .auth-form__input {
-    font-size: 16px;
+    font-size: 1rem;
     font-family: Helvetica;
     border-radius: 8px;
     border: none;
@@ -41,6 +41,7 @@
 
 .auth-form__row {
     display: flex;
+    flex-wrap: wrap-reverse;
     justify-content: flex-end;
     align-items: end;
     margin-top: 24px;
@@ -48,7 +49,7 @@
 
 .auth-form__button {
     color: white;
-    font-size: 24px;
+    font-size: 1.5rem;
     padding: 10px 50px;
     margin-left: auto;
     background-color: #1b1b1b;
@@ -59,4 +60,27 @@
 
 .auth-form__button:hover {
     opacity: 0.9;
+}
+
+@media (max-width: 650px) {
+    .auth-form {
+        width: 350px;
+    }
+}
+
+@media (max-width: 450px) {
+    .auth-form {
+        width: 260px;
+    }
+
+    .auth-form__button {
+        padding: 10px 0;
+        width: 100%;
+    }
+
+    .auth-form__row {
+        justify-content: center;
+        margin-top: 15px;
+        gap: 15px
+    }
 }
