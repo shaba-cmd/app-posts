@@ -5,14 +5,14 @@ import useComments from './modules/api'
 import Auth from './pages/Auth/Auth'
 import Main from './pages/Main/Main'
 import Posts from './pages/Posts/Posts'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { HashRouter, Routes, Route } from 'react-router-dom'
 
 function App() {
   const { comments, loader, getComments, postComments, likeComment, setComments } = useComments();
   
   return (
     <>
-      <BrowserRouter>
+      <HashRouter>
         <Header />
 
         <Routes>
@@ -33,7 +33,7 @@ function App() {
         </Routes>
 
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </>
   )
 }

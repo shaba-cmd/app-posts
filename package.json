@@ -2,6 +2,7 @@
   "name": "app-posts",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://shaba-cmd.github.io/app-posts",
   "type": "module",
   "scripts": {
     "dev": "vite --open",
