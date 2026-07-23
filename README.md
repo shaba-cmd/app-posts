@@ -1,16 +1,24 @@
-# React + Vite
+# CommentsPro
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+SPA Приложение для написания коментариев
 
-Currently, two official plugins are available:
+## Деплой
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+https://shaba-cmd.github.io/app-posts/
 
-## React Compiler
+## Технологии
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+React + Vite
+CSS/JSX
 
-## Expanding the ESLint configuration
+**Библиотеки**
+* react-router-dom
+* date-fns
+* axios
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Функциональность
+
+Можно регистрироваться/авторизироваться
+Если аккаунта нет, то добавлять комменты нельзя, для этого нужно пройти регистрацию
+При входе в аккаунт под коментариями появляется форма добавления коммента
+Их так же можно лайкать
